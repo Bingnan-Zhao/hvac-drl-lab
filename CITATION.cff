@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or its models, please cite it as below."
+title: "hvac-drl-lab: Small, reproducible HVAC case studies with Modelica and deep reinforcement learning"
+authors:
+  - family-names: Zhao
+    given-names: Bingnan
+type: software
+version: 0.1.0
+date-released: 2026-11-03
+doi: 10.5281/zenodo.23910085
+license: MIT
+repository-code: "https://github.com/Bingnan-Zhao/hvac-drl-lab"
+keywords:
+  - HVAC
+  - Modelica
+  - deep reinforcement learning
+  - building controls
+  - demand response

@@ -1,5 +1,8 @@
 # hvac-drl-lab
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23910085.svg)](https://doi.org/10.5281/zenodo.23910085)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Small, reproducible HVAC case studies that combine **physical modelling**
 (Modelica, CFD), **classical control** and **deep reinforcement learning**.
 Each case uses a deliberately small model so that an agent trains on a laptop
@@ -33,6 +36,26 @@ cd cases/01-precooling-rc-room
 python run_policy.py          # trained agent on the test window
 python train.py --seed 0      # train your own
 ```
+
+## How to cite
+
+If you use these models or results, please cite the archived release:
+
+> Zhao, B. (2026). *hvac-drl-lab: Small, reproducible HVAC case studies with Modelica and deep reinforcement learning*. Zenodo. https://doi.org/10.5281/zenodo.23910085
+
+```bibtex
+@software{zhao_hvac_drl_lab,
+  author    = {Zhao, Bingnan},
+  title     = {hvac-drl-lab: Small, reproducible HVAC case studies with Modelica and deep reinforcement learning},
+  year      = {2026},
+  publisher = {Zenodo},
+  doi       = {10.5281/zenodo.23910085},
+  url       = {https://doi.org/10.5281/zenodo.23910085}
+}
+```
+
+The DOI above always resolves to the latest version. GitHub's "Cite this repository"
+button uses `CITATION.cff`.
 
 ## Licence
 
