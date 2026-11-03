@@ -1,0 +1,46 @@
+# ---------------------------------------------------------------
+# Only models, trained policies, results and simple templates are
+# published. Local build / validation tools stay on the dev machine.
+# ---------------------------------------------------------------
+
+# Local helper scripts (Windows batch wrappers, Dymola automation)
+*.bat
+cases/*/run_all.py
+cases/*/evaluate.py
+cases/*/validate_vs_modelica.py
+common/hvacdrl/dymola_mat.py
+
+# Dymola working files and replay data (the FMU is published in cases/*/fmu/)
+cases/*/dymola_out/
+modelica/HVACDRL/Resources/replay/
+*.mat
+dsin.txt
+dsfinal.txt
+dslog.txt
+dsmodel*
+dymosim*
+buildlog.txt
+*.log
+
+# Training logs and intermediate data (models, KPIs and figures are kept)
+cases/*/results/train_log_*.txt
+cases/*/results/run_log.txt
+cases/*/results/train_monitor_*.csv
+cases/*/results/trajectory_*.csv
+cases/*/results/*_replay_python.csv
+runs/
+tb_logs/
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+setup_env_log.txt
+.ipynb_checkpoints/
+
+# Fluent large files
+*.cas
+*.cas.h5
+*.dat
+*.dat.h5
+*.trn

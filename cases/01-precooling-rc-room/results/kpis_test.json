@@ -1,0 +1,42 @@
+{
+  "kpis": {
+    "Fixed 24\u00b0C": {
+      "energy_kWh": 67.65205588742951,
+      "cost_AUD": 13.307984187612343,
+      "peak_energy_kWh": 8.973841490955653,
+      "discomfort_Kh": 0.0,
+      "max_power_kW": 3.1797397240455694
+    },
+    "Expert pre-cool": {
+      "energy_kWh": 71.68329869579058,
+      "cost_AUD": 11.704743534772177,
+      "peak_energy_kWh": 4.3930232701260845,
+      "discomfort_Kh": 0.02514779204641326,
+      "max_power_kW": 4.157048410909084
+    },
+    "DRL (SAC)": {
+      "energy_kWh": 74.33494564769873,
+      "cost_AUD": 12.560639168388288,
+      "peak_energy_kWh": 5.749330953819588,
+      "discomfort_Kh": 0.000610159725780246,
+      "max_power_kW": 4.191454303418316
+    }
+  },
+  "best_seed": 1,
+  "seeds": {
+    "0": {
+      "energy_kWh": 73.07663990844188,
+      "cost_AUD": 12.460614881199932,
+      "peak_energy_kWh": 5.385353793120933,
+      "discomfort_Kh": 0.2108276684612635,
+      "max_power_kW": 4.165073912354788
+    },
+    "1": {
+      "energy_kWh": 74.33494564769873,
+      "cost_AUD": 12.560639168388288,
+      "peak_energy_kWh": 5.749330953819588,
+      "discomfort_Kh": 0.000610159725780246,
+      "max_power_kW": 4.191454303418316
+    }
+  }
+}

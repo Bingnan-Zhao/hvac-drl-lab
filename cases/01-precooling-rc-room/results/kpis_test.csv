@@ -1,0 +1,4 @@
+,energy_kWh,cost_AUD,peak_energy_kWh,discomfort_Kh,max_power_kW,cost_saving_vs_fixed_%
+Fixed 24°C,67.652,13.308,8.974,0.000,3.180,0.000
+Expert pre-cool,71.683,11.705,4.393,0.025,4.157,12.047
+DRL (SAC),74.335,12.561,5.749,0.001,4.191,5.616
