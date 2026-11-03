@@ -149,7 +149,7 @@ tool, e.g. with [fmpy](https://github.com/CATIA-Systems/FMPy).
   that training takes minutes. Absolute numbers are indicative only.
 * Perfect weather forecast (+3 h) and a perfect slab temperature measurement.
 * Tariff prices are illustrative; real small-business tariffs also include
-  demand charges (see Case 04).
+  demand charges, which are not modelled here.
 * Single test window of three days; the result for a whole summer may differ.
 * The DRL agent is trained on the Python plant; the Modelica model is used to
   verify that both implementations agree, not for training.

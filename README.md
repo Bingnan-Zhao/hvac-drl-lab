@@ -6,12 +6,9 @@ Each case uses a deliberately small model so that an agent trains on a laptop
 CPU in minutes, and every learned policy is compared honestly with simple and
 expert baselines.
 
-| # | Case | Model | DRL result (test window) | Status |
-|---|---|---|---|---|
-| 01 | [Pre-cooling under a time-of-use tariff](cases/01-precooling-rc-room/) | 2-node RC office zone, ideal chiller, PI loop (Modelica Buildings) — Brisbane | SAC −5.6 % electricity cost vs fixed 24 °C (expert rule −12.0 %); Modelica replay matches within 0.04 K | ✅ |
-| 02 | Chiller + cooling tower: condenser water set point | — | — | planned |
-| 03 | Chilled-water supply temperature reset | — | — | planned |
-| 04 | Chilled-water storage with demand charges | — | — | planned |
+| # | Case | Model | DRL result (test window) |
+|---|---|---|---|
+| 01 | [Pre-cooling under a time-of-use tariff](cases/01-precooling-rc-room/) | 2-node RC office zone, ideal chiller, PI loop (Modelica Buildings) — Brisbane | SAC −5.6 % electricity cost vs fixed 24 °C (expert rule −12.0 %); Modelica replay matches within 0.04 K |
 
 ## Tools
 
