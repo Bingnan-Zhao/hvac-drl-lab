@@ -44,3 +44,6 @@ setup_env_log.txt
 *.dat
 *.dat.h5
 *.trn
+
+# Case-specific development tools
+cases/*/fmu_speedtest*

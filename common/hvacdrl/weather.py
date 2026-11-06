@@ -84,6 +84,7 @@ class Weather:
     TDryBul: np.ndarray  # degC
     HGloHor: np.ndarray  # W/m2
     RH: np.ndarray  # %
+    pAtm: np.ndarray = None  # Pa
 
     @classmethod
     def from_mos(cls, path: str | Path) -> "Weather":
@@ -94,9 +95,10 @@ class Weather:
                     continue
                 parts = line.split()
                 if parts:
-                    rows.append([float(parts[0]), float(parts[1]), float(parts[3]), float(parts[8])])
+                    rows.append([float(parts[0]), float(parts[1]), float(parts[3]), float(parts[8]),
+                                 float(parts[4])])
         a = np.asarray(rows)
-        return cls(time=a[:, 0], TDryBul=a[:, 1], RH=a[:, 2], HGloHor=a[:, 3])
+        return cls(time=a[:, 0], TDryBul=a[:, 1], RH=a[:, 2], HGloHor=a[:, 3], pAtm=a[:, 4])
 
     def _interp(self, t: np.ndarray | float, values: np.ndarray, shift: float = 0.0):
         t = np.mod(np.asarray(t, dtype=float) - shift, YEAR_SECONDS)
@@ -112,5 +114,33 @@ class Weather:
         """Global horizontal irradiation in W/m2."""
         return self._interp(t, self.HGloHor, shift=-1800.0)
 
+    def TWetBul(self, t):
+        """Outdoor wet-bulb temperature in degC (psychrometric equation; matches
+        ReaderTMY3 with computeWetBulbTemperature=true within about 0.05 K RMSE)."""
+        t = np.asarray(t, dtype=float)
+        return wet_bulb(self._interp(t, self.TDryBul), self._interp(t, self.RH), self._interp(t, self.pAtm))
+
     def daily_max(self) -> np.ndarray:
         return self.TDryBul.reshape(365, 24).max(axis=1)
+
+
+def _psat(T):
+    """Saturation pressure of water vapour over liquid water [Pa], T in K."""
+    return 611.657 * np.exp(17.2799 - 4102.99 / (T - 35.719))
+
+
+def wet_bulb(TDryBul_degC, RH_percent, p):
+    """Thermodynamic wet-bulb temperature [degC] by bisection of the psychrometric equation."""
+    T = np.asarray(TDryBul_degC, dtype=float) + 273.15
+    phi = np.asarray(RH_percent, dtype=float) / 100.0
+    p = np.asarray(p, dtype=float)
+    w = 0.621945 * phi * _psat(T) / (p - phi * _psat(T))
+    lo, hi = T - 40.0, T.copy()
+    for _ in range(50):
+        Tw = 0.5 * (lo + hi)
+        ws = 0.621945 * _psat(Tw) / (p - _psat(Tw))
+        wc = ((2501 - 2.326 * (Tw - 273.15)) * ws - 1.006 * (T - Tw)) / \
+             (2501 + 1.86 * (T - 273.15) - 4.186 * (Tw - 273.15))
+        hi = np.where(wc > w, Tw, hi)
+        lo = np.where(wc > w, lo, Tw)
+    return 0.5 * (lo + hi) - 273.15

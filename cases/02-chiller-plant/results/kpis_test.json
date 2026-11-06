@@ -1,0 +1,76 @@
+{
+  "plant": "fmu",
+  "best_seed": 0,
+  "kpis": {
+    "Fixed 29.4 \u00b0C": {
+      "energy_kWh": 12224.839852001065,
+      "chiller_kWh": 10193.49053422195,
+      "fan_kWh": 357.3493177791161,
+      "pump_kWh": 1674.0,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 52,
+      "staging_changes": 3,
+      "mean_approach_K": 5.985440051245192,
+      "saving_vs_fixed_%": 0.0,
+      "saving_vs_rule_%": -1.6231131076833
+    },
+    "Wet bulb + 4 K": {
+      "energy_kWh": 12029.586063799492,
+      "chiller_kWh": 9472.051813173552,
+      "fan_kWh": 883.5342506259406,
+      "pump_kWh": 1674.0,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 52,
+      "staging_changes": 3,
+      "mean_approach_K": 3.8221139509079887,
+      "saving_vs_fixed_%": 1.5971889248889615,
+      "saving_vs_rule_%": 0.0
+    },
+    "DRL (SAC)": {
+      "energy_kWh": 11865.389931078014,
+      "chiller_kWh": 9644.670587798042,
+      "fan_kWh": 560.2193432799711,
+      "pump_kWh": 1660.5,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 51,
+      "staging_changes": 5,
+      "mean_approach_K": 4.212931249047198,
+      "saving_vs_fixed_%": 2.940324170088927,
+      "saving_vs_rule_%": 1.3649358494187205
+    },
+    "Hourly optimum": {
+      "energy_kWh": 11871.256936799451,
+      "chiller_kWh": 9580.071016750695,
+      "fan_kWh": 630.6859200487551,
+      "pump_kWh": 1660.5,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 51,
+      "staging_changes": 5,
+      "mean_approach_K": 3.9417192761879605,
+      "saving_vs_fixed_%": 2.8923316745432586,
+      "saving_vs_rule_%": 1.316164381387146
+    }
+  },
+  "seeds": {
+    "0": {
+      "energy_kWh": 11865.389931078014,
+      "chiller_kWh": 9644.670587798042,
+      "fan_kWh": 560.2193432799711,
+      "pump_kWh": 1660.5,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 51,
+      "staging_changes": 5,
+      "mean_approach_K": 4.212931249047198
+    },
+    "1": {
+      "energy_kWh": 11877.96528478095,
+      "chiller_kWh": 9717.866311063488,
+      "fan_kWh": 499.598973717463,
+      "pump_kWh": 1660.5,
+      "unmet_Kh": 0.0,
+      "hours_two_chillers": 51,
+      "staging_changes": 5,
+      "mean_approach_K": 4.398515021394238
+    }
+  }
+}

@@ -12,11 +12,12 @@ expert baselines.
 | # | Case | Model | DRL result (test window) |
 |---|---|---|---|
 | 01 | [Pre-cooling under a time-of-use tariff](cases/01-precooling-rc-room/) | 2-node RC office zone, ideal chiller, PI loop (Modelica Buildings) — Brisbane | SAC −5.6 % electricity cost vs fixed 24 °C (expert rule −12.0 %); Modelica replay matches within 0.04 K |
+| 02 | [Chiller staging and condenser water reset](cases/02-chiller-plant/) | 2 screw chillers, variable-speed cooling tower, pumps (Modelica Buildings), trained directly on the FMU | SAC −2.9 % plant energy vs fixed 29.4 °C, −1.4 % vs tuned wet-bulb rule; matches the hourly optimum |
 
 ## Tools
 
 * Modelica: Dymola 2023, [Modelica Buildings Library](https://simulationresearch.lbl.gov/modelica/) 12.0.0, MSL 4.0.0
-* Python: Gymnasium, Stable-Baselines3, PyTorch, fmpy
+* Python: Gymnasium, Stable-Baselines3, PyTorch, fmpy (FMU co-simulation)
 * Weather: TMYx files from [climate.onebuilding.org](https://climate.onebuilding.org)
 
 ## Repository layout
@@ -36,6 +37,9 @@ cd cases/01-precooling-rc-room
 python run_policy.py          # trained agent on the test window
 python train.py --seed 0      # train your own
 ```
+
+Case 02 runs the plant as an FMU with Windows binaries; elsewhere set
+`HVACDRL_PLANT=twin` to use its Python approximation.
 
 ## How to cite
 
