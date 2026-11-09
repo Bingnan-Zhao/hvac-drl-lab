@@ -5,8 +5,8 @@ authors:
   - family-names: Zhao
     given-names: Bingnan
 type: software
-version: 0.1.0
-date-released: 2026-11-03
+version: 0.2.0
+date-released: 2026-11-09
 doi: 10.5281/zenodo.23910085
 license: MIT
 repository-code: "https://github.com/Bingnan-Zhao/hvac-drl-lab"
@@ -16,3 +16,5 @@ keywords:
   - deep reinforcement learning
   - building controls
   - demand response
+  - chiller plant
+  - FMI
