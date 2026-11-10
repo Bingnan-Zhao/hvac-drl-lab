@@ -13,6 +13,8 @@ expert baselines.
 |---|---|---|---|
 | 01 | [Pre-cooling under a time-of-use tariff](cases/01-precooling-rc-room/) | 2-node RC office zone, ideal chiller, PI loop (Modelica Buildings) — Brisbane | SAC −5.6 % electricity cost vs fixed 24 °C (expert rule −12.0 %); Modelica replay matches within 0.04 K |
 | 02 | [Chiller staging and condenser water reset](cases/02-chiller-plant/) | 2 screw chillers, variable-speed cooling tower, pumps (Modelica Buildings), trained directly on the FMU | SAC −2.9 % plant energy vs fixed 29.4 °C, −1.4 % vs tuned wet-bulb rule; matches the hourly optimum |
+| 03 | [Chilled water supply temperature reset](cases/03-chw-reset/) | Chiller, variable-flow chilled water, AHU wet coil, VAV zone with humidity (Modelica Buildings), trained directly on the FMU | SAC −0.18 % plant energy vs fixed 6.67 °C, matching the hourly optimum; both common reset rules use more energy than the fixed set point |
+| 04 | [Chilled water storage with time-of-use prices and a demand charge](cases/04-chilled-water-storage/) | Case 02 plant + 400 m³ stratified tank (Modelica Buildings), trained directly on the FMU | SAC −7.8 % weekly cost vs no storage (TOU rule −3.9 %, tuned demand-limit rule −6.3 %, perfect foresight −17.4 %) |
 
 ## Tools
 
@@ -38,8 +40,8 @@ python run_policy.py          # trained agent on the test window
 python train.py --seed 0      # train your own
 ```
 
-Case 02 runs the plant as an FMU with Windows binaries; elsewhere set
-`HVACDRL_PLANT=twin` to use its Python approximation.
+Cases 02–04 run the plant as an FMU with Windows binaries; for cases 02 and 04,
+set `HVACDRL_PLANT=twin` elsewhere to use their Python approximation.
 
 ## How to cite
 

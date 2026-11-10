@@ -11,7 +11,9 @@ class FMUPlant:
 
     ``step(inputs, duration, substep)`` applies constant inputs for ``duration``
     seconds and returns the outputs averaged over the communication sub-steps
-    (trapezoidal rule), plus the outputs at the end of the step.
+    (trapezoidal rule, or ``average="end"``: mean of the values at the end of each
+    sub-step, which ignores the output read just after the inputs were changed),
+    plus the outputs at the end of the step.
     """
 
     def __init__(self, path, inputs, outputs, start_values=None):
@@ -40,7 +42,7 @@ class FMUPlant:
         self.t = float(t0)
         return dict(zip(self.outputs, self.fmu.getReal(self.vr_out)))
 
-    def step(self, inputs, duration, substep=600.0):
+    def step(self, inputs, duration, substep=600.0, average="trapezoid"):
         self.fmu.setReal(self.vr_in, list(inputs))
         n = int(round(duration / substep))
         y0 = np.array(self.fmu.getReal(self.vr_out))
@@ -49,11 +51,22 @@ class FMUPlant:
             self.fmu.doStep(currentCommunicationPoint=self.t, communicationStepSize=substep)
             self.t += substep
             y1 = np.array(self.fmu.getReal(self.vr_out))
-            acc += 0.5 * (y0 + y1)
+            acc += 0.5 * (y0 + y1) if average == "trapezoid" else y1
             y0 = y1
         mean = dict(zip(self.outputs, acc / n))
         end = dict(zip(self.outputs, y0))
         return mean, end
+
+    # FMU state (for one-step look-ahead, e.g. an hourly brute-force benchmark)
+    def get_state(self):
+        return self.fmu.getFMUState(), self.t
+
+    def set_state(self, state):
+        self.fmu.setFMUState(state[0])
+        self.t = state[1]
+
+    def free_state(self, state):
+        self.fmu.freeFMUState(state[0])
 
     def close(self):
         try:

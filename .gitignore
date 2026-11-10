@@ -25,6 +25,7 @@ buildlog.txt
 # Training logs and intermediate data (models, KPIs and figures are kept)
 cases/*/results/train_log_*.txt
 cases/*/results/run_log.txt
+cases/*/results/eval_log.txt
 cases/*/results/train_monitor_*.csv
 cases/*/results/trajectory_*.csv
 cases/*/results/*_replay_python.csv
