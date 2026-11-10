@@ -73,8 +73,7 @@ equation
       StartTime=86400,
       StopTime=518400,
       Interval=300,
-      Tolerance=1e-06,
-      __Dymola_Algorithm="Cvode"),
+      Tolerance=1e-06),
     Documentation(info="<html>
 <p>
 Simulates 2 to 6 January (two warm-up days followed by the 3-day test window

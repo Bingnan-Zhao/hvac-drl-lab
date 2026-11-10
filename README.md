@@ -18,7 +18,7 @@ expert baselines.
 
 ## Tools
 
-* Modelica: Dymola 2023, [Modelica Buildings Library](https://simulationresearch.lbl.gov/modelica/) 12.0.0, MSL 4.0.0
+* Modelica: [Modelica Buildings Library](https://simulationresearch.lbl.gov/modelica/) 12.0.0, MSL 4.0.0
 * Python: Gymnasium, Stable-Baselines3, PyTorch, fmpy (FMU co-simulation)
 * Weather: TMYx files from [climate.onebuilding.org](https://climate.onebuilding.org)
 

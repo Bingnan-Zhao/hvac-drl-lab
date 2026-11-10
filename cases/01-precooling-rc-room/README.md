@@ -128,7 +128,7 @@ python run_policy.py --model results/sac_case01_seed0.zip
 ```
 
 The Modelica package is in [`modelica/HVACDRL`](../../modelica/HVACDRL) (open
-`package.mo` in Dymola or OpenModelica together with Buildings 12.0.0). The
+`package.mo` in a Modelica tool together with Buildings 12.0.0). The
 plant is also provided as an FMU, so it can be simulated without a Modelica
 tool, e.g. with [fmpy](https://github.com/CATIA-Systems/FMPy).
 
@@ -141,7 +141,7 @@ tool, e.g. with [fmpy](https://github.com/CATIA-Systems/FMPy).
 | `train.py` | SAC training template |
 | `run_policy.py` | Run a trained policy or a baseline, print KPIs, plot |
 | `results/` | Trained SAC models (2 seeds), KPIs, figures |
-| `fmu/Case01_RCRoom.fmu` | Plant as FMU (FMI 2.0 co-simulation, win64, exported from Dymola 2023) |
+| `fmu/Case01_RCRoom.fmu` | Plant as FMU (FMI 2.0 co-simulation, win64) |
 
 ## 7. Limitations
 

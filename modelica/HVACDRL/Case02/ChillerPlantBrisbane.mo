@@ -73,8 +73,7 @@ equation
       StartTime=86400,
       StopTime=691200,
       Interval=600,
-      Tolerance=1e-06,
-      __Dymola_Algorithm="Cvode"),
+      Tolerance=1e-06),
     Documentation(info="<html>
 <p>
 Simulates 2 to 8 January with the rule-based baseline: one chiller up to 90&nbsp;%

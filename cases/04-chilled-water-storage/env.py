@@ -92,7 +92,7 @@ class StorageEnv(gym.Env):
         self.trajectory = []
         self.plant.start_values = {"SOC_start": self.soc0}
         # The FMU is initialised at the first step with the first action as input: an input
-        # change right after initialisation does not trigger an event in the Dymola FMU, so the
+        # change right after initialisation does not trigger an event in this FMU, so the
         # chillers would stay in their initial state until the next change of nChi.
         self.plant.t = t0
         self._init_pending = True

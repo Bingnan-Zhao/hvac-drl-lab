@@ -77,7 +77,7 @@ class Weather:
     Temperatures are taken at the indicated time. Solar radiation (an hourly
     total in the EPW) is shifted 30 min earlier, which reproduces
     Buildings.BoundaryConditions.WeatherData.ReaderTMY3 (verified against a
-    Dymola simulation, RMSE of global horizontal radiation < 7 W/m2).
+    Modelica simulation, RMSE of global horizontal radiation < 7 W/m2).
     """
 
     time: np.ndarray  # s, hourly grid starting at 0

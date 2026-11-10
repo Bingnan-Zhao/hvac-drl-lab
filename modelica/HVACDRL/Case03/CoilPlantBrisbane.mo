@@ -78,8 +78,7 @@ equation
       StartTime=86400,
       StopTime=691200,
       Interval=600,
-      Tolerance=1e-06,
-      __Dymola_Algorithm="Cvode"),
+      Tolerance=1e-06),
     Documentation(info="<html>
 <p>
 Simulates 2 to 8 January. The building is occupied and the plant runs on weekdays from 07:00 to 18:00; outside these hours the zone has no gains. With

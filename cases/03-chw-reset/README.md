@@ -4,7 +4,7 @@
 One chiller serves the wet cooling coil of an air handling unit (AHU), which supplies a
 humid Brisbane office zone through a variable air volume (VAV) system. Every hour a soft
 actor-critic (SAC) agent sets the chilled water supply temperature between 5.5 and
-11 °C. It is trained **directly on the Dymola FMU** and judged against two common reset
+11 °C. It is trained **directly on the FMU** and judged against two common reset
 rules and an hourly brute-force optimum computed on the same FMU.
 
 The result goes against the textbook. Warmer chilled water does make the chiller more
@@ -78,7 +78,7 @@ with moisture. The zone's sensible heat capacity is raised 5× for furniture.
 | Simulation | Energy (kWh) |
 |---|---:|
 | FMU from Python, inputs changed every hour | 5 606 |
-| Dymola, continuous inputs | 5 574 |
+| Modelica simulation, continuous inputs | 5 574 |
 
 The difference is 0.6 %. One operating hour of the two FMU instances (agent and
 reference) takes about 5 ms, including the off hours in between.
@@ -87,7 +87,7 @@ reference) takes about 5 ms, including the off hours in between.
 
 | | |
 |---|---|
-| Plant in the loop | The Dymola FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
+| Plant in the loop | The plant FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
 | Decision step | 1 h, only operating hours (55 per week) |
 | Action (1, continuous) | Chilled water set point 5.5–11 °C |
 | Observation (14) | Hour of day (sin/cos); load now and in 1 h; outdoor temperature, relative humidity and wet bulb; zone temperature and RH, supply air temperature, pump and air flow fractions at the end of the previous hour; previous set point; time left in the week |
@@ -177,7 +177,7 @@ plant.
 | `train.py` | SAC training template |
 | `run_policy.py` | Run a trained policy or a rule on the FMU and print KPIs |
 | `results/` | Trained SAC models (2 seeds), KPIs, hourly trajectories, figures |
-| `fmu/Case03_CoilPlant.fmu` | Plant, coil and zone as FMU (FMI 2.0 co-simulation, win64, Dymola 2023) |
+| `fmu/Case03_CoilPlant.fmu` | Plant, coil and zone as FMU (FMI 2.0 co-simulation, win64) |
 
 ## 6. Limitations
 
@@ -194,5 +194,5 @@ plant.
   every controller. The humidity penalty is never active in the test week.
 * **Forecasts and scope.** The agent sees the current and next hour's load. One test week.
 * **FMU state save/restore.** `fmi2GetFMUstate`/`fmi2SetFMUstate` would make the optimum
-  faster. In this Dymola FMU, a restored state no longer reacted correctly to later input
+  faster. In this FMU, a restored state no longer reacted correctly to later input
   changes (the chiller stayed off), so the benchmark replays the week instead.

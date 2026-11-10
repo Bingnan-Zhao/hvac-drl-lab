@@ -3,7 +3,7 @@
 **Can a reinforcement-learning agent rediscover how to run a chiller plant?**
 A soft actor-critic (SAC) agent decides every hour how many of two chillers run
 and which condenser water temperature the cooling tower should deliver. It is
-trained **directly on the plant FMU exported from Dymola** — every step of every
+trained **directly on the plant FMU exported from the Modelica model** — every step of every
 episode is the Modelica model. Without being given any rule, it learns to follow
 the outdoor wet-bulb temperature with a ~4 K approach and to bring on the second
 chiller at about 720 kW — the same logic as the industry rule of thumb — and
@@ -50,7 +50,7 @@ temperature, building load. Outputs: chiller, fan, pump and total power,
 condenser and chilled water supply temperatures.
 
 **FMU check.** Running the FMU from Python with the wet-bulb rule for the test
-week gives 12 011 kWh, against 11 966 kWh for the same rule simulated in Dymola
+week gives 12 011 kWh, against 11 966 kWh for the same rule simulated directly in Modelica
 (0.4 %; the difference comes from updating the set point hourly instead of
 continuously). One hourly step of the FMU takes 0.6 ms on a laptop.
 
@@ -58,7 +58,7 @@ continuously). One hourly step of the FMU takes 0.6 ms on a laptop.
 
 | | |
 |---|---|
-| Plant in the loop | The Dymola FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
+| Plant in the loop | The plant FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
 | Decision step | 1 h, only hours with cooling load (≈ 55–72 per week) |
 | Action (2, continuous) | Condenser water set point 18–32 °C; staging signal (> 0 → 2 chillers) |
 | Safety layer | The second chiller is forced on above 95 % of one chiller's nominal capacity |
@@ -131,7 +131,7 @@ The FMU contains Windows 64-bit binaries. On other platforms set
 | `train.py` | SAC training template |
 | `run_policy.py` | Run a trained policy or a rule on the FMU and print KPIs |
 | `results/` | Trained SAC models (2 seeds), KPIs, figures |
-| `fmu/Case02_ChillerPlant.fmu` | Plant as FMU (FMI 2.0 co-simulation, win64, Dymola 2023) |
+| `fmu/Case02_ChillerPlant.fmu` | Plant as FMU (FMI 2.0 co-simulation, win64) |
 
 ## 6. Limitations
 

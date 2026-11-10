@@ -7,7 +7,7 @@ penalties) is kept. The plant has little thermal memory (zone air only), so this
 hourly choice is a near-optimal reference.
 
 (Saving and restoring the FMU state with fmi2GetFMUstate/fmi2SetFMUstate would be faster,
-but in the Dymola FMU the restored state did not react correctly to later input changes,
+but in this FMU the restored state did not react correctly to later input changes,
 so the slower replay is used.)
 """
 import numpy as np

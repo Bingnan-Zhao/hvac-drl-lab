@@ -4,7 +4,7 @@
 The chiller plant of [Case 02](../02-chiller-plant/) gets a 400 m³ stratified chilled
 water tank (about 3.4 MWh). Every hour a soft actor-critic (SAC) agent decides how fast
 to charge or discharge it. The electricity bill has a time-of-use energy price and a
-demand charge on the highest hourly power. The agent is trained **directly on the Dymola
+demand charge on the highest hourly power. The agent is trained **directly on the
 FMU**, so every step simulates the stratified tank and the plant in Modelica.
 
 Over the test week the agent cuts the cost by **7.8 %** compared with no storage. That
@@ -93,7 +93,7 @@ staging rule inside the FMU did not react to the hourly input changes; see §6.
 
 | | |
 |---|---|
-| Plant in the loop | The Dymola FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
+| Plant in the loop | The plant FMU (FMI 2.0 co-simulation) via fmpy, 10 min communication step |
 | Decision step | 1 h, all 168 hours of the week |
 | Action (1, continuous) | Storage command −1 (full discharge) to +1 (full charge); charging is limited to the spare chiller capacity, discharging to the building load |
 | Observation (17) | State of charge; load now and in 1–3 h; load left today and in the next 24 h; price now and next hour; hours to the peak period; hour of day (sin/cos); peak power so far this week; plant power without storage now; highest power without storage in the next 12 h relative to the peak so far; wet bulb; time left in the week |
@@ -171,7 +171,7 @@ The FMU contains Windows 64-bit binaries. On other platforms set
 | `train.py` | SAC training template |
 | `run_policy.py` | Run a trained policy or a rule on the FMU and print KPIs |
 | `results/` | Trained SAC models (2 seeds), KPIs, hourly trajectories, figures |
-| `fmu/Case04_StoragePlant.fmu` | Plant and tank as FMU (FMI 2.0 co-simulation, win64, Dymola 2023) |
+| `fmu/Case04_StoragePlant.fmu` | Plant and tank as FMU (FMI 2.0 co-simulation, win64) |
 
 ## 6. Notes and limitations
 
@@ -183,7 +183,7 @@ The FMU contains Windows 64-bit binaries. On other platforms set
 * **Benchmark.** The perfect-foresight schedule is computed on the quasi-steady
   approximation with ideal stratification. On the FMU it costs 6 % more than the
   approximation predicts, so the true optimum of the FMU is somewhat lower than 3 077 AUD.
-* **Staging outside the FMU.** In the Dymola co-simulation FMU, an input change at a
+* **Staging outside the FMU.** In the co-simulation FMU used here, an input change at a
   communication point did not trigger an event. Relations that depend on the inputs
   through other variables, such as a staging threshold on the chiller load, therefore
   kept their previous value until the next event. For the same reason, the environment
