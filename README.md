@@ -15,6 +15,7 @@ expert baselines.
 | 02 | [Chiller staging and condenser water reset](cases/02-chiller-plant/) | 2 screw chillers, variable-speed cooling tower, pumps (Modelica Buildings), trained directly on the FMU | SAC −2.9 % plant energy vs fixed 29.4 °C, −1.4 % vs tuned wet-bulb rule; matches the hourly optimum |
 | 03 | [Chilled water supply temperature reset](cases/03-chw-reset/) | Chiller, variable-flow chilled water, AHU wet coil, VAV zone with humidity (Modelica Buildings), trained directly on the FMU | SAC −0.18 % plant energy vs fixed 6.67 °C, matching the hourly optimum; both common reset rules use more energy than the fixed set point |
 | 04 | [Chilled water storage with time-of-use prices and a demand charge](cases/04-chilled-water-storage/) | Case 02 plant + 400 m³ stratified tank (Modelica Buildings), trained directly on the FMU | SAC −7.8 % weekly cost vs no storage (TOU rule −3.9 %, tuned demand-limit rule −6.3 %, perfect foresight −17.4 %) |
+| 05 | [Supply air temperature reset in a VAV system](cases/05-vav-g36/) | AHU, three VAV boxes with reheat, three MixedAir zones (Modelica Buildings), ASHRAE G36 reset as baseline, trained directly on the FMU | Summer: all controllers within 1 %. Winter: G36 uses the least energy but lets zone RH reach 73 %; SAC uses 4.7 % more than G36 (1.3 % less than fixed 13 °C), keeps the zones below 24.5 °C and RH at most 64 % |
 
 ## Tools
 
@@ -40,7 +41,7 @@ python run_policy.py          # trained agent on the test window
 python train.py --seed 0      # train your own
 ```
 
-Cases 02–04 run the plant as an FMU with Windows binaries; for cases 02 and 04,
+Cases 02–05 run the plant as an FMU with Windows binaries; for cases 02 and 04,
 set `HVACDRL_PLANT=twin` elsewhere to use their Python approximation.
 
 ## How to cite
