@@ -1,6 +1,7 @@
 # hvac-drl-lab
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23910085.svg)](https://doi.org/10.5281/zenodo.23910085)
+[![arXiv](https://img.shields.io/badge/arXiv-2611.22144-b31b1b.svg)](https://arxiv.org/abs/2611.22144)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 
 Small, reproducible HVAC case studies that combine **physical modelling**
@@ -46,7 +47,24 @@ set `HVACDRL_PLANT=twin` elsewhere to use their Python approximation.
 
 ## How to cite
 
-If you use these models or results, please cite the archived release:
+Cases 01–04 are described in the paper:
+
+> Zhao, B., Gammulle, H. and Fernando, T. (2026). *When does deep reinforcement learning pay off in HVAC supervisory control? Four small Modelica case studies trained directly on FMUs*. arXiv:2611.22144. https://doi.org/10.48550/arXiv.2611.22144
+
+```bibtex
+@misc{zhao2026drl_hvac,
+  author        = {Zhao, Bingnan and Gammulle, Harshala and Fernando, Tharindu},
+  title         = {When does deep reinforcement learning pay off in {HVAC} supervisory control? {F}our small {M}odelica case studies trained directly on {FMUs}},
+  year          = {2026},
+  eprint        = {2611.22144},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  doi           = {10.48550/arXiv.2611.22144},
+  url           = {https://arxiv.org/abs/2611.22144}
+}
+```
+
+To cite the code and models themselves, please use the archived release:
 
 > Zhao, B. (2026). *hvac-drl-lab: Small, reproducible HVAC case studies with Modelica and deep reinforcement learning*. Zenodo. https://doi.org/10.5281/zenodo.23910085
 

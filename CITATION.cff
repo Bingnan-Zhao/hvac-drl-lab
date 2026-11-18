@@ -19,3 +19,20 @@ keywords:
   - chiller plant
   - thermal energy storage
   - FMI
+preferred-citation:
+  type: article
+  title: "When does deep reinforcement learning pay off in HVAC supervisory control? Four small Modelica case studies trained directly on FMUs"
+  authors:
+    - family-names: Zhao
+      given-names: Bingnan
+    - family-names: Gammulle
+      given-names: Harshala
+    - family-names: Fernando
+      given-names: Tharindu
+  year: 2026
+  journal: "arXiv preprint"
+  identifiers:
+    - type: other
+      value: "arXiv:2611.22144"
+  doi: 10.48550/arXiv.2611.22144
+  url: "https://arxiv.org/abs/2611.22144"

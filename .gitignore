@@ -48,3 +48,7 @@ setup_env_log.txt
 
 # Case-specific development tools
 cases/*/fmu_speedtest*
+
+# Internal design memos (not published)
+cases/*/DESIGN_MEMO.md
+cases/*/design.py
