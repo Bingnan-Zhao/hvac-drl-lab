@@ -52,3 +52,8 @@ cases/*/fmu_speedtest*
 # Internal design memos (not published)
 cases/*/DESIGN_MEMO.md
 cases/*/design.py
+
+
+# Case 06: work in progress, not published yet (delete these lines to publish it)
+cases/06-pv-chilled-water-storage/
+modelica/HVACDRL/Case06/

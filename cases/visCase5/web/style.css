@@ -1,0 +1,52 @@
+:root { --bg:#0f1115; --panel:rgba(22,25,31,.92); --ink:#e8e8e6; --muted:#9a9893; --line:#2c3038; --acc:#2a78d6; }
+* { box-sizing: border-box; }
+html, body { margin:0; height:100%; background:var(--bg); color:var(--ink); font:13px/1.4 system-ui, -apple-system, "Segoe UI", sans-serif; overflow:hidden; }
+#view { position:fixed; inset:0; }
+#top { position:fixed; left:16px; top:12px; display:flex; gap:18px; align-items:baseline; pointer-events:none; }
+#top .title { font-weight:600; font-size:15px; }
+#clock { font-variant-numeric: tabular-nums; font-size:15px; }
+.muted { color:var(--muted); } .small { font-size:11px; }
+#panel { position:fixed; right:12px; top:12px; bottom:12px; width:330px; overflow-y:auto; background:var(--panel);
+  border:1px solid var(--line); border-radius:10px; padding:4px 14px 14px; }
+#panel h3 { font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--muted); margin:14px 0 8px; }
+section + section { border-top:1px solid var(--line); }
+.row { display:flex; align-items:center; gap:8px; margin:6px 0; }
+.row label { min-width:72px; color:var(--muted); }
+.row input[type=range] { flex:1; min-width:0; }
+#secAxis { flex:0 0 auto; }
+button, select, input[type=date], input.num { background:#1c2027; color:var(--ink); border:1px solid var(--line); border-radius:6px; padding:4px 8px; font:inherit; }
+button:hover { border-color:#4a5160; } button:disabled { opacity:.4; }
+.seg { display:flex; } .seg button { border-radius:0; margin-left:-1px; } .seg button:first-child { border-radius:6px 0 0 6px; } .seg button:last-child { border-radius:0 6px 6px 0; }
+.seg button.on { background:var(--acc); border-color:var(--acc); color:#fff; }
+.seg.wide button { flex:1; }
+table.zones { width:100%; border-collapse:collapse; } table.zones th { color:var(--muted); font-weight:500; text-align:center; }
+table.zones td { padding:2px; } table.zones td:first-child { color:var(--muted); }
+input.num { width:62px; text-align:right; }
+#power { display:grid; grid-template-columns:1fr auto; gap:2px 10px; font-variant-numeric:tabular-nums; }
+#chart { width:100%; margin-top:6px; }
+#legend { position:fixed; left:16px; bottom:14px; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 10px; }
+#legend .ticks { display:flex; justify-content:space-between; font-size:11px; color:var(--muted); width:220px; }
+#tip { position:fixed; pointer-events:none; background:rgba(10,12,16,.95); border:1px solid var(--line); border-radius:6px; padding:6px 8px;
+  font-variant-numeric:tabular-nums; display:none; white-space:pre; font-size:12px; }
+.row.checks { flex-wrap:wrap; gap:4px 12px; }
+.row.checks label { min-width:0; display:flex; align-items:center; gap:4px; color:var(--text, #ddd); }
+.row button { flex:1; }
+
+.zlabel { position:fixed; transform:translate(-50%,-100%); pointer-events:none; background:rgba(16,18,22,.82); border:1px solid rgba(255,255,255,.12);
+  border-radius:6px; padding:4px 8px; font:12px system-ui; color:#e8e8e6; white-space:nowrap; display:none; }
+.zlabel b { display:flex; align-items:center; gap:6px; font-weight:600; }
+.zlabel i { width:10px; height:10px; border-radius:2px; display:inline-block; }
+.zlabel span { display:block; color:#9a9893; font-size:11px; }
+
+#leaders { position:fixed; inset:0; width:100vw; height:100vh; pointer-events:none; z-index:1; }
+#leaders line { stroke:rgba(232,232,230,.75); stroke-width:1.2; }
+#leaders circle { fill:#f3c63a; stroke:#15181d; stroke-width:1; }
+.callout { position:fixed; transform:translate(-50%,-100%); pointer-events:none; z-index:2; background:rgba(16,18,22,.88);
+  border:1px solid rgba(255,255,255,.14); border-left:3px solid #39a2fc; border-radius:5px; padding:3px 7px;
+  font:11px system-ui; color:#e8e8e6; white-space:nowrap; display:none; }
+.callout b { font-weight:600; display:block; }
+.callout span { color:#9a9893; display:block; }
+.callout.heater { border-left-color:#6d7178; }
+.callout.heater.on { border-left-color:#ff6a1f; }
+.callout.heater.on b { color:#ffb37a; }
+#panel, #top, #legend { z-index:5; } #tip { z-index:6; }
