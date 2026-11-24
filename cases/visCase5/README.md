@@ -29,7 +29,7 @@ Requires the repository environment (`fmpy`, `numpy`, `stable-baselines3`) plus 
 
 ## Stand-alone demo
 
-Open `demo/HVAC_Case05_Demo.html` in any recent browser. The 3D model, the viewer and recorded runs
+Open `demo/HVAC_Case05_Demo.html` in any recent browser (`demo/HVAC_Case05_Demo_mobile.html` is the phone version). The 3D model, the viewer and recorded runs
 of the Modelica model (two summer and two winter days under each strategy) are all inside the file.
 When a set point is changed in the demo, the page switches to a simplified in-browser model whose
 numbers are approximate (yellow badge); "Back to recorded" returns to the Modelica results.

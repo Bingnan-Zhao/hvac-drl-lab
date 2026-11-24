@@ -13,3 +13,6 @@ recorded simulation data are all inside this one file.
   approximate. "Back to recorded" returns to the real run.
 - Mouse: left-drag to orbit, right-drag to pan, wheel to zoom. Click a unit, then drag
   Explode to take it apart.
+
+Phone version: HVAC_Case05_Demo_mobile.html (same data; controls in a bottom sheet -
+tap "Controls" - and the view fits a portrait screen).
